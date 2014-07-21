@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{dcpic}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows}
+
+
+\begin{document}
+\title{Reading Notes}
+\author{Quinton Anderson}
+\date{\today}
+\abstract{These are my notes, that I make as I read articles}
+\maketitle
+
+\section{Ideas}
+
+Take the concept of the lambda architecture to the next logical level, which is using combining batch and realtime DBs, together with combining eventual with strongly consistent databases, and expose them via a single query planner and interface. Thus expose a DB that beats the CAP theorem entirely. 
+
+
+
+\section{Notes on Papers}
+
+\subsection{Database}
+
+\subsubsection{LINVIEW: Incremental View Maintenance for Complex Analytical
+               Queries}
+
+Article reference: \cite{DBLP:journals/corr/NikolicEK14}
+
+The article has 2 interesting aspects, firstly they present a framework for incremental maintenance of algrebra applications. Incremental in the sense that incremental materialized views can be generated as an optimisation, especially in cases where expensive matrix multiplication is involved. 
+
+Secondly the article presents a compiler that generates spark code that implements the algebra logic which is defined in either R or some other language. 
+
+\textbf{Thoughts:} There are some high level take aways from this, which I need to consider:
+\begin{itemize}
+  \item There is an entire world of research into incremental optimisations. This will be required in order to fully support a lambda approach, I suspect. In the high level idea of combining different DBs of different attributes, various optimisation techniques will be required out of the box
+  \item The notion of generating this kind of code is also interesting, I would need to do some more reading into compiler theory, or rather macros within scala. I doubt I would build a compiler toolchain, but rather use standard scala structures for this. 
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{articles.bib}
+\end{document}

@@ -11,19 +11,38 @@ All of these relate to consistency reasoning within the context of a given store
 * [Consistency Analysis in Bloom: a CALM and Collected Approach](http://db.cs.berkeley.edu/papers/cidr11-bloom.pdf)
 * [CRDTs: Consistency without concurrency control](http://pagesperso-systeme.lip6.fr/Marc.Shapiro/papers/RR-6956.pdf)
 * [A comprehensive study of Convergent and Commutative Replicated Data Types](http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf)
+* 
+
+# Query processing
+
+* [PIQL – Scale Independent Query Processing](http://www.eecs.berkeley.edu/~marmbrus/papers/piql.vldb12.pdf)
+* Lingual research here...
+
+# Machine Learning - Storage and computational foundations
+
+* [Materialization Optimizations for Feature Selection Workloads](./papers/mod539-zhang.pdf)
+* [LINVIEW: Incremental View Maintenance for Complex Analytical Queries](./papers/mod447-nikolic.pdf)
+* [Opportunistic Physical Design for Big Data Analytics](papers/p851-lefevre.pdf)
 
 # Hetrogeneous Data Store Integration
 
 * [Semantic Integration of Heterogeneous Information Sources](http://www.mswi.uni-osnabrueck.de/rieger_2000_03.pdf)
+* [RICES: Reasoning about Information Consistency across Enterprise Solutions](./papers/rices.doc)
 * TODO: add more here
 
-# Semantic Types
+# Data cleaning, data management
 
-* TODO: add list of internal papers on the topic
+* [Semantic-Integration Research in the Database Community](http://www.aaai.org/ojs/index.php/aimagazine/article/view/1801/1699), [Alternate link](./papers/1801-1797-1-PB.pdf)
+* TODO: Add tope paper and related here
 
 # Time, clocks and ordering
 
 * [Time, clocks and odering of the events in a distributed system](http://web.stanford.edu/class/cs240/readings/lamport.pdf)
+
+# Functional Pearls / Other programming
+
+* [Applicative programming with eﬀects](http://strictlypositive.org/IdiomLite.pdf)
+* [Reflection without remorse](http://homepages.cwi.nl/~ploeg/papers/zseq.pdf)
 
 # UB-Trees
 

@@ -1,0 +1,12 @@
+* Todo [10/07/2014]
+- [ ] Learn the org mode short cuts
+- [ ] Figure out bibtex
+- [ ] Get a latex plugin working nicely in sublime (latexing isn't working because you can't buy it)
+- [ ] Setup an organisation repo to put all the org mode files and notes
+- [ ] Find the research and theory behind lingual
+- [ ] Papers to read:
+  - [ ] Materialization Optimizations for Feature Selection Workloads
+  - [ ] LINVIEW: Incremental View Maintenance for Complex Analytical Queries
+  - [ ] Opportunistic Physical Design for Big Data Analytics
+  - [ ] PIQL – Scale Independent Query Processing
+  

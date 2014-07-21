@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{dcpic}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows}
+
+% "define" Scala
+\lstdefinelanguage{Scala}{
+  morekeywords={abstract,case,catch,class,def,%
+    do,else,extends,false,final,finally,%
+    for,if,implicit,import,match,mixin,%
+    new,null,object,override,package,%
+    private,protected,requires,return,sealed,%
+    super,this,throw,trait,true,try,%
+    type,val,var,while,with,yield},
+  otherkeywords={=>,<-,<\%,<:,>:,\#,@},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]"""
+}
+
+\begin{document}
+\title{Reading Notes}
+\author{Quinton Anderson}
+\date{\today}
+\abstract{These are my notes, that I make as I read articles}
+\maketitle
+
+\section{Typesetting Sandbox}
+
+and here: $ A \circ B $ 
+Here is a list of useful links:
+\begin{itemize}
+
+  \item \href{http://docs.mathjax.org/en/latest/tex.html}{Tex Info}
+  \item \href{http://www.jmilne.org/not/Mamscd.pdf}{amscd Tex extension guide}
+  \item \href{https://latex.codecogs.com/}{Play with Latex Math}
+  \item \href{http://www.sciweavers.org/free-online-latex-equation-editor}{Free Online Editor}
+
+\end{itemize}
+
+
+\section{Scala Notes}
+
+The scala Option.fold only folds in a value if its empty
+
+\lstset{language=Scala} 
+\begin{lstlisting}  % Start your code-block
+
+val s = List(1,2,3)
+s.map(_ + 1)
+
+\end{lstlisting}
+
+\section{Bibtex}
+
+An excellent reference is simply on \href{http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}{wikipedia}
+
+Here are some templates for the .bib file: 
+
+\begin{lstlisting}	
+@article{Xarticle,
+    author    = "",
+    title     = "",
+    journal   = "",
+    %volume   = "",
+    %number   = "",
+    %pages    = "",
+    year      = "XXXX",
+    %month    = "",
+    %note     = "",
+}
+\end{lstlisting}
+
+And here is an example of citing an entry from the .bib file:  \cite{greenwade93}
+
+\bibliographystyle{plain}
+\bibliography{test.bib}
+\end{document}
