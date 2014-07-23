@@ -1,12 +1,18 @@
 * Todo [10/07/2014]
-- [ ] Learn the org mode short cuts
-- [ ] Figure out bibtex
-- [ ] Get a latex plugin working nicely in sublime (latexing isn't working because you can't buy it)
-- [ ] Setup an organisation repo to put all the org mode files and notes
+- [X] Learn the org mode short cuts
+- [X] Figure out bibtex
+- [X] Get a latex plugin working nicely in sublime (latexing isn't working because you can't buy it)
+- [X] Setup an organisation repo to put all the org mode files and notes
 - [ ] Find the research and theory behind lingual
+- [ ] Harvard algebra course: http://www.extension.harvard.edu/open-learning-initiative/abstract-algebra
+- [ ] The containment problem is known to be computationaly hard? A. Chandra and P. M. Merlin. Optimal implementation of conjunctive
+queries in relational databases. In STOC, 1977
+- [ ] Fundamental DB research (calculas), combined with Algebra should be interesting
 - [ ] Papers to read:
-  - [ ] Materialization Optimizations for Feature Selection Workloads
-  - [ ] LINVIEW: Incremental View Maintenance for Complex Analytical Queries
+  - [X] Materialization Optimizations for Feature Selection Workloads
+  - [X] LINVIEW: Incremental View Maintenance for Complex Analytical Queries
   - [ ] Opportunistic Physical Design for Big Data Analytics
   - [ ] PIQL – Scale Independent Query Processing
+  - [ ] Distributivity versus associativity in the homology theory of algebraic structures (http://arxiv.org/pdf/1109.4850.pdf)
+  - [ ] Distributivity in Quandles and Quasigroups (http://arxiv.org/pdf/1209.6518v1.pdf) 
   

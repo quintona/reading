@@ -1,26 +1,15 @@
-\documentclass[11pt]{article}
-\usepackage{listings}
-\usepackage{hyperref}
-\usepackage{tikz-cd}
-\usepackage{dcpic}
-\usepackage{tikz}
-\usetikzlibrary{matrix}
-\usepackage{tkz-graph}
-\usetikzlibrary{arrows}
+\documentclass{article}
+
+\input{base.tex}
 
 
 \begin{document}
-\title{Reading Notes}
-\author{Quinton Anderson}
-\date{\today}
-\abstract{These are my notes, that I make as I read articles}
-\maketitle
 
 \section{Ideas}
 
 Take the concept of the lambda architecture to the next logical level, which is using combining batch and realtime DBs, together with combining eventual with strongly consistent databases, and expose them via a single query planner and interface. Thus expose a DB that beats the CAP theorem entirely. 
 
-
+A generalised query layer that allows you to query across database. This would be the generalisation of the idea above, and obivously more generally applicable. The query planner would be really interesting, especially given notional materialized views across database.
 
 \section{Notes on Papers}
 
@@ -29,7 +18,7 @@ Take the concept of the lambda architecture to the next logical level, which is 
 \subsubsection{LINVIEW: Incremental View Maintenance for Complex Analytical
                Queries}
 
-Article reference: \cite{DBLP:journals/corr/NikolicEK14}
+\textbf{Article reference:} \cite{DBLP:journals/corr/NikolicEK14}
 
 The article has 2 interesting aspects, firstly they present a framework for incremental maintenance of algrebra applications. Incremental in the sense that incremental materialized views can be generated as an optimisation, especially in cases where expensive matrix multiplication is involved. 
 
@@ -41,6 +30,124 @@ Secondly the article presents a compiler that generates spark code that implemen
   \item The notion of generating this kind of code is also interesting, I would need to do some more reading into compiler theory, or rather macros within scala. I doubt I would build a compiler toolchain, but rather use standard scala structures for this. 
 \end{itemize}
 
+\subsubsection{Exploiting Opportunistic Physical Design in Large-scale
+               Data Analytics}
+
+\textbf{Article Reference:} \cite{DBLP:journals/corr/abs-1303-6609}
+
+\subsubsection{MISO: souping up big data query processing with a multistore system}
+
+\textbf{Arcticle Reference:} \cite{LeFevre:2014:MSU:2588555.2588568}
+
+Multistore systems utilize multiple distinct data stores such as Hadoop's HDFS and an RDBMS for query processing by allowing a query to access data and computation in both stores. Current approaches to multistore query processing fail to achieve the full potential benefits of utilizing both systems due to the high cost of data movement and loading between the stores. Tuning the physical design of a multistore, i.e., deciding what data resides in which store, can reduce the amount of data movement during query processing, which is crucial for good multistore performance. In this work, we provide what we believe to be the first method to tune the physical design of a multistore system, by focusing on which store to place data. Our method, called MISO for MultISstore Online tuning, is adaptive, lightweight, and works in an online fashion utilizing only the by-products of query processing, which we term as opportunistic views. We show that MISO significantly improves the performance of ad-hoc big data query processing by leveraging the specific characteristics of the individual stores while incurring little additional overhead on the stores.
+
+\textbf{Thoughts:} This is exactly in line with what I was thinking, with a focus on the consistency aspects and some algrebras.
+
+\subsection{Algebra}
+
+\subsubsection{Distributivity versus associativity in the homology theory of algebraic structures}
+
+\textbf{Article Reference:} \cite{2011arXiv1109.4850P}
+
+\subsection{programming}
+
+\subsubsection{Lift}
+
+\textbf{Taken from}: \href{http://stackoverflow.com/questions/17965059/what-is-lifting-in-scala}{Stack Overflow}
+
+There are a few usages:
+
+\textbf{PartialFunction}
+
+
+Remember a `PartialFunction[A, B]` is a function defined for some subset of the domain `A` (as specified by the `isDefinedAt` method). You can "lift" a `PartialFunction[A, B]` into a `Function[A, Option[B]]`. That is, a function defined over the *whole* of `A` but whose values are of type `Option[B]`
+
+This is done by the explicit invocation of the method `lift` on `PartialFunction`.
+
+\begin{minted}{scala}
+    scala> val pf: PartialFunction[Int, Boolean] = 
+          { case i if i > 0 => i % 2 == 0}
+    pf: PartialFunction[Int,Boolean] = <function1>
+
+    scala> pf.lift
+    res1: Int => Option[Boolean] = <function1>
+
+    scala> res1(-1)
+    res2: Option[Boolean] = None
+
+    scala> res1(1)
+    res3: Option[Boolean] = Some(false)
+\end{minted}
+
+\textbf{Methods}
+
+You can "lift" a method invocation into a function. This is called *eta-expansion* (thanks to Ben James for this). So for example:
+
+\begin{minted}{scala}
+    scala> def times2(i: Int) = i * 2
+    times2: (i: Int)Int
+\end{minted}
+
+We lift a method into a function by applying the \textbf{underscore}
+
+\begin{minted}{scala}
+    scala> val f = times2 _
+    f: Int => Int = <function1>
+
+    scala> f(4)
+    res0: Int = 8
+\end{minted}
+
+Note the fundamental difference between methods and functions. `res0` is an \textbf{instance} (i.e. it is a \textbf{value}) of the (function) type `(Int => Int)`
+
+\textbf{Functors}
+
+A *functor* (as defined by **scalaz**) is some "container" (I use the term *extremely* loosely), `F` such that, if we have an `F[A]` and a function `A => B`, then we can get our hands on an `F[B]` (think, for example, `F = List` and the `map` method)
+
+We can encode this property as follows:
+
+\begin{minted}{scala}
+    trait Functor[F[_]] { 
+      def map[A, B](fa: F[A])(f: A => B): F[B]
+    }
+\end{minted}
+
+This is isomorphic to being able to "lift" the function `A => B` into the domain of the functor. That is:
+
+\begin{minted}{scala}
+    def lift[F[_]: Functor, A, B](f: A => B): F[A] => F[B]
+\end{minted}
+
+That is, if `F` is a functor, and we have a function `A => B`, we have a function `F[A] => F[B]`. You might try and implement the `lift` method - it's pretty trivial.
+
+\textbf{Monad Transformers}
+
+As *hcoopz* says below (and I've just realized that this would have saved me from writing a ton of unnecessary code), the term "lift" also has a meaning within **Monad Transformers**. Recall that a monad transformers are a way of "stacking" monads on top of each other (monads do not compose).
+
+So for example, suppose you have a function which returns an `IO[Stream[A]]`. This can be converted to the monad transformer `StreamT[IO, A]`. Now you may wish to "lift" some other value an `IO[B]` perhaps to that it is also a `StreamT`. You could either write this:
+\begin{minted}{scala}
+    StreamT.fromStream(iob map (b => Stream(b)))
+\end{minted}
+
+Or this:
+\begin{minted}{scala}
+    iob.liftM[StreamT]
+\end{minted}    
+
+this begs the question: *why do I want to convert an `IO[B]` into a `StreamT[IO, B]`?*. The answer would be "to take advantage of composition possibilities". Let's say you have a function `f: (A, B) => C`
+
+\begin{minted}{scala}
+    lazy val f: (A, B) => C = ???
+    val cs = 
+      for {
+        a <- as                //as is a StreamT[IO, A]
+        b <- bs.liftM[StreamT] //bs was just an IO[B]
+      }
+      yield f(a, b)
+
+    cs.toStream //is a Stream[IO[C]], cs was a StreamT[IO, C]
+\end{minted}
+
 \bibliographystyle{plain}
 \bibliography{articles.bib}
-\end{document}
+Reflection without Remorse
