@@ -3,11 +3,29 @@
 - [X] Figure out bibtex
 - [X] Get a latex plugin working nicely in sublime (latexing isn't working because you can't buy it)
 - [X] Setup an organisation repo to put all the org mode files and notes
-- [ ] Find the research and theory behind lingual
+- [ ] Find the research and theory behind lingual (https://github.com/julianhyde/optiq)
 - [ ] Harvard algebra course: http://www.extension.harvard.edu/open-learning-initiative/abstract-algebra
 - [ ] The containment problem is known to be computationaly hard? A. Chandra and P. M. Merlin. Optimal implementation of conjunctive
 queries in relational databases. In STOC, 1977
-- [ ] Fundamental DB research (calculas), combined with Algebra should be interesting
+- [ ] Logic programming
+- [ ] Datalog: http://infolab.stanford.edu/~ullman/fcdb/aut07/slides/dlog.pdf
+- [ ] Pure funtional data types
+- [ ] Monad plus, category (monoid laws or otherwise)
+- [ ] Monad logic category
+- [ ] Extensible effects
+- [ ] Free monad, write some code, you clearly don't understand it yet. in
+- [ ] Codensity and composing flatmaps
+- [ ] Fundamental DB research (calculas), combined with certain Algebras should be interesting
+- [ ] How does left associativity relate to laziness?
+- [ ] Paxos related papers
+- [ ] SQL Parsers?
+- [ ] Review datalog contrib in clojure (https://code.google.com/p/clojure-contrib/wiki/DatalogOverview)
+- [ ] Add papers from this: http://pdos.csail.mit.edu/dsrg/
+- [ ] Find some more survey papers:
+  - [ ] Query optimisation
+  - [ ] DB in general
+  - [ ] DB integration
+  - [ ] Transaction management, consistency, and related.
 - [ ] Papers to read:
   - [X] Materialization Optimizations for Feature Selection Workloads
   - [X] LINVIEW: Incremental View Maintenance for Complex Analytical Queries
@@ -15,4 +33,29 @@ queries in relational databases. In STOC, 1977
   - [ ] PIQL – Scale Independent Query Processing
   - [ ] Distributivity versus associativity in the homology theory of algebraic structures (http://arxiv.org/pdf/1109.4850.pdf)
   - [ ] Distributivity in Quandles and Quasigroups (http://arxiv.org/pdf/1209.6518v1.pdf) 
+  - [ ] Stackless Scala with Free Monads
+  - [ ] Fast and loose is morally correct
+  - [ ] SPANStore: Cost-effective Geo-replicated Storage Spanning Multiple Cloud Services
+  - [ ] Multi-Data Center Consistency (http://mdcc.cs.berkeley.edu/), http://pdos.csail.mit.edu/dsrg/
+  - [ ] Fast Paxos (http://research.microsoft.com/pubs/64624/tr-2005-112.pdf)
+  - [ ] ZooKeeper: Wait-free coordination for Internet-scale systems (http://static.usenix.org/event/usenix10/tech/full_papers/Hunt.pdf)
+  - [ ] Viewstamped Replication Revisited (http://pmg.csail.mit.edu/papers/vr-revisited.pdf)
+  - [ ] Query Optimisation (http://web.stanford.edu/class/cs346/ioannidis.pdf)
+  - [ ] An Overview of Query Optimization in Relational Systems (http://dis.unal.edu.co/profesores/eleon/cursos/tebd/articulos/05-chaudhuri.pdf)
+  - [ ] Out of the tarpit (http://shaffner.us/cs/papers/tarpit.pdf)
+  - [ ] Scalable SPARQL Querying of Large RDF Graphs (http://cs-www.cs.yale.edu/homes/dna/papers/sw-graph-scale.pdf)
+  - [ ] HadoopSPARQL : A Hadoop-based Engine for Multiple SPARQL Query Answering (http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_346.pdf)
+  - [ ] Distributed SPARQL query engine using MapReduce (http://www.inf.ed.ac.uk/publications/thesis/online/IM100832.pdf)
+  - [ ] 
+
+
+
   
+Functor is your structure, something you can map over.
+Free is a way of encoding an AST, a generic tree is a free monad.
+
+Learning order: 
+1-Algebra
+2-Pure functional data structures
+3-Logic and category
+4-Fusion and optimisation

@@ -43,6 +43,12 @@ Multistore systems utilize multiple distinct data stores such as Hadoop's HDFS a
 
 \textbf{Thoughts:} This is exactly in line with what I was thinking, with a focus on the consistency aspects and some algrebras.
 
+\subsubsection{SPANStore: Cost-effective Geo-replicated Storage Spanning Multiple Cloud Services}
+
+\textbf{Arcticle Reference:} \cite{Wu:2013:SCG:2517349.2522730}
+
+
+
 \subsection{Algebra}
 
 \subsubsection{Distributivity versus associativity in the homology theory of algebraic structures}
@@ -50,6 +56,42 @@ Multistore systems utilize multiple distinct data stores such as Hadoop's HDFS a
 \textbf{Article Reference:} \cite{2011arXiv1109.4850P}
 
 \subsection{programming}
+
+\subsubsection{General thoughts}
+
+\begin{itemize}
+  \item Can't define a functor for set, because of the constraint on the type. Thus coyoneda. 
+  \item Functor is something you can define a map on. 
+  \item Monad is something you can define a flatmap on (bind)
+  \item Once you have a functor, you can construct a free monad
+  \item An identity is used to start things unravelling. Recursive case, at the next level. 
+\end{itemize}
+
+\subsubsection{Reflection without remorse}
+
+\textbf{Article Reference:} \cite{conf/haskell/PloegKiselyov14}
+
+\textbf{From Article:}
+
+A series of list appends or monadic binds for many monads performs algorithmically worse when left-associated. Continuation- passing style (CPS) is well-known to cure this severe dependence of performance on the association pattern. The advantage of CPS dwindles or disappears if we have to examine or modify the intermediate result of a series of appends or binds, before continuing the series. Such examination is frequently needed, for example, to control search in non-determinism monads.
+
+For example, in the expression (x ++ y) ++ z, the list x must be traversed twice: it occurs twice in a left hand side argument to +. Hence, this expression runs in in 2|x| + |y| + 2 steps, whereas the equivalent expression x ++ (y ++ z) runs in just |x| + |y| + 2 steps. In this way, a wrong grouping of expressions involving ++ can easily lead to severe performance problems. 
+
+In general, the problem occurs with any associative (or satisfying the associativity monad law) operator (⊕) that traverses its left argument but not its right argument that operates on some recursive2 data type. In this situation, (x ⊕ y) ⊕ z costs |x| more steps to eval- uate than x ⊕ (y ⊕ z), where |x| is now the number of values of type X inside x that are non-terminal (i.e. they are not for example the empty list or a leaf). Repeated application of such an operator can lead to asymptotic running time overhead if |a⊕b| ≥ |a|+|b|
+
+We cannot expect the programmer to only form right- associated expressions, especially when using laziness: the pro- grammer must then make sure that every time the operator is used, the left hand side cannot be itself a result of this operator.
+
+A benefit of using type aligned sequences in this way, instead of directly using regular sequences, is that type aligned sequences rule out a class of implementation bugs: the types in a type aligned sequence enforce the ordering of the elements. Hence, accidentally switching two elements will result in a type error, as the resulting sequence may not be a path. In contrast, in regular sequences the types do not enforce the ordering of the elements and an accidental change of order in, for instance, the definition of concatenation would have gone unnoticed by the type checker.
+
+\textbf{Thoughts:}
+
+So the key issue is that the left associativity, under certain circumstances can cause a real performance problem. CPS is often used as a means to deal with this issue, however we can't inspect the operations (reflect) without great cost even when using CPS, and in the case of Monadic contexts this is often extremely useful (think reactive). Reflect essentially means alternate between observing and building.
+
+I am clearly missing something with regards to laziness and left associativity. Must go find some more information on this front. 
+
+Type aligned sequences and free is worth reading more on. The type aligned conept in terms of operation ordering is really interesting, especially when we mix it with the concepts of planning and function fusion. Describing the computation where you strongly determine the order.
+
+TAS - key point is to reify the functions, the composition is problem when you combine too many flatmap.
 
 \subsubsection{Lift}
 
