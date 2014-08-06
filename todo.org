@@ -19,8 +19,12 @@ queries in relational databases. In STOC, 1977
 - [ ] How does left associativity relate to laziness?
 - [ ] Paxos related papers
 - [ ] SQL Parsers?
+- [ ] Read up on the query planning and hooks for same in Hive and Impala. 
+- [ ] Fundamental question, do you build a query planner into the middleware? Is that where the idea is going?
 - [ ] Review datalog contrib in clojure (https://code.google.com/p/clojure-contrib/wiki/DatalogOverview)
+- [ ] Add papers to the list from here: http://www.vldb.org/pvldb/vol7.html
 - [ ] Add papers from this: http://pdos.csail.mit.edu/dsrg/
+- [ ] Add papers from http://www.sigmod.org/2014
 - [ ] Find some more survey papers:
   - [ ] Query optimisation
   - [ ] DB in general
@@ -46,7 +50,15 @@ queries in relational databases. In STOC, 1977
   - [ ] Scalable SPARQL Querying of Large RDF Graphs (http://cs-www.cs.yale.edu/homes/dna/papers/sw-graph-scale.pdf)
   - [ ] HadoopSPARQL : A Hadoop-based Engine for Multiple SPARQL Query Answering (http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_346.pdf)
   - [ ] Distributed SPARQL query engine using MapReduce (http://www.inf.ed.ac.uk/publications/thesis/online/IM100832.pdf)
-  - [ ] 
+  - [ ] Semantic Database Modeling: Survey, Applications, and Research Issues (http://www.cc.gatech.edu/computing/Database/readinggroup/articles/p201-hull.pdf)
+  - [ ] Mesa: Geo-Replicated, Near Real-Time, Scalable Data Warehousing (http://www.vldb.org/pvldb/vol7/p1259-gupta.pdf)
+  - [X] Summingbird: A Framework for Integrating Batch and Online MapReduce Computations (http://www.vldb.org/pvldb/vol7/p1441-boykin.pdf)
+  - [ ] A Co-Relational Model of Data for Large Shared Data Banks (http://dl.acm.org/citation.cfm?id=1924436)
+  - [X] Indexing HDFS Data in PDW: Splitting the data from the index (http://www.vldb.org/pvldb/vol7/p1520-gankidi.pdf)
+  - [X] The Unified Logging Infrastructure for Data Analytics at Twitter (http://vldb.org/pvldb/vol5/p1771_georgelee_vldb2012.pdf)
+  - [ ] Algebraic classifiers: a generic approach to fast cross-validation, online training, and parallel training(http://jmlr.org/proceedings/papers/v28/izbicki13.pdf)
+  
+
 
 
 

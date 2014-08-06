@@ -47,7 +47,34 @@ Multistore systems utilize multiple distinct data stores such as Hadoop's HDFS a
 
 \textbf{Arcticle Reference:} \cite{Wu:2013:SCG:2517349.2522730}
 
+\subsubsection{Indexing HDFS Data in PDW: Splitting the data from the index}
 
+\textbf{Article Reference:} http://www.vldb.org/pvldb/vol7/p1520-gankidi.pdf
+
+A relational DB is used to effectively store the index for a table in HDFS. This is a rather simple idea, but the complexity comes in the query planning and the cost optimiser, which needs to balance the cost benefit of indexing the data versus simply mapping over the dataset. They do some of this analysis in the paper. It would be interesting to generalize the idea, the issue is the query planner that will span the technologies, I need to give this more thought, there is also the UBTree approach would could come into play and should also be considered in the cost based approach. Also probablistic data structures...
+
+I think the fundamental that people miss is that HDFS should remain the underlying storage, because you can always run full table scans over the data. It becomes the lowest common denominator, and this gives you the ultimate flexibility and reliability. Externalizing indexes, and other optimisation should sit along side, as long as they don't get sticky and break the autonomy of the data in such a way that mapping isn't possible. There are various ways to externalize indexes into the colunmar data in HDFS, the important issue is having a query planner that is pluggable enough to allow for these different mechanisms. Once you have such a query planner (spark SQL is a good starting point), then it is important to consider all the intended use cases and therefore the different required consistency levels. This is where the lambda portion would come in and the consistency discussion becomes quite interesting. Think about the Druid architecture, plus HDFS with externalized index and query planner. Could be onto something there...
+
+\subsection{Big Data}
+
+\subsubsection{Summingbird: A Framework for Integrating Batch and Online MapReduce Computations}
+
+\textbf{Article Reference:} \href{http://www.vldb.org/pvldb/vol7/p1441-boykin.pdf}
+
+\textbf{Notes:}
+
+Commutative and associative get used too interchangably in the article. ``Commutativity is needed because partial results from each partition may be aggregated in arbitrary order. In the online processing case, commutativity lets us handle issues like out-of-order message delivery. For both online and batch processing, commutativity further enables certain optimizations such as combiners in MapReduce and partial aggregations in Storm (as discussed above)`` This all makes sense, except it is preceeded with a definition of semi-group, which is associative. I need to do a write up here on the differences in these contexts, so as not to get myself confused.
+
+Accoring to the article: ``Commutativity is needed because partial results from each partition may be aggregated in arbitrary order.
+In the online processing case, commutativity lets us handle issues like out-of-order message delivery. For both online and batch processing, commutativity further enables certain optimizations such as combiners in MapReduce and partial aggregations in Storm (as discussed above)'' Now my category theory is a bit rusty, but I thought monoid was a semi-group with an identity element, this is the first time I have seen the commutativity property added to the category... More reading required there. Ah, nevermind, they are referring to a commutative monoid or a commutative semi-group. I wonder if that is a seperate category, which laws would you assert with it? 
+
+They force the time invariance at the API level, which makes the merging logic easy. Fair enough. 
+
+"The data import pipeline is engineered so that a directory does not appear until all the files contained in that directory have arrived, so it is not possible to process partially-imported results". Need to read up on their logging infrastructure.
+
+\textbf{Summary:} Overall I think their ideas are quite sound. I need to play with the API to understand what happens with the edge cases where your can't express things in a commutative category, and need to dive down into specific primitives to achieve what you need to achieve. The boilerplate of combining the aggregate values and launching MR jobs when required, has to be done and so is tempting to leverage, however I am still not convinced these make the added complexity a worthwhile trade off, especially when you can view the bulk of the logic as monoids that are entirely library with law based tests. The time invariant and combining streams aspect, we should learn from them.
+
+They also have some nice optimisations like fusing or colocating functionality in the spout and bolt in order to remove the serialisation overheads. We should learn from this.
 
 \subsection{Algebra}
 
