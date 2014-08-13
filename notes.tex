@@ -30,6 +30,17 @@ Secondly the article presents a compiler that generates spark code that implemen
   \item The notion of generating this kind of code is also interesting, I would need to do some more reading into compiler theory, or rather macros within scala. I doubt I would build a compiler toolchain, but rather use standard scala structures for this. 
 \end{itemize}
 
+\subsubsection{Shark: SQL and Rich Analytics at Scale}
+
+\textbf{Article Reference:} http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-214.pdf
+
+They have thought really long and hard about the various optimisations that could be applied. It also serves as a really nice summary of the various technologies and techniques in this space. Given that shark project is dead, they obviously realized that trying to get the hive code to play nicely is quite tough, they also realized that getting all these techniques up to industrial standards is quite tough, all that being said, they have proposed some excellent ideas and I assume many of them are being dragged through to Spark SQL given that it the next generation of whats in the paper. 
+
+The availability model is also an interesting dimension to consider. 
+
+I don't hold much hope in the distributed RDBMS model, but it is interesting to contrast it, and potentially there are some lessons to learn there. I also need to search more on the traditional MPP DB model.
+
+
 \subsubsection{Exploiting Opportunistic Physical Design in Large-scale
                Data Analytics}
 
@@ -54,6 +65,18 @@ Multistore systems utilize multiple distinct data stores such as Hadoop's HDFS a
 A relational DB is used to effectively store the index for a table in HDFS. This is a rather simple idea, but the complexity comes in the query planning and the cost optimiser, which needs to balance the cost benefit of indexing the data versus simply mapping over the dataset. They do some of this analysis in the paper. It would be interesting to generalize the idea, the issue is the query planner that will span the technologies, I need to give this more thought, there is also the UBTree approach would could come into play and should also be considered in the cost based approach. Also probablistic data structures...
 
 I think the fundamental that people miss is that HDFS should remain the underlying storage, because you can always run full table scans over the data. It becomes the lowest common denominator, and this gives you the ultimate flexibility and reliability. Externalizing indexes, and other optimisation should sit along side, as long as they don't get sticky and break the autonomy of the data in such a way that mapping isn't possible. There are various ways to externalize indexes into the colunmar data in HDFS, the important issue is having a query planner that is pluggable enough to allow for these different mechanisms. Once you have such a query planner (spark SQL is a good starting point), then it is important to consider all the intended use cases and therefore the different required consistency levels. This is where the lambda portion would come in and the consistency discussion becomes quite interesting. Think about the Druid architecture, plus HDFS with externalized index and query planner. Could be onto something there...
+
+It is interesting that the index size was roughly 10 percent of the total data size. That gives one a real simple cost model to work against in terms of the relational DB that supports indexing. It also means that practically you can't really scale the indexes that much, unless maybe you use some more scalable DB for the indexes, this is where it would be interesting to use SOLR or related for the task. The trick of course being that you could easily get to a similar size to the actual data, but there are ways to control/manage that risk. 
+
+\subsubsection{Mesa: Geo-Replicated, Near Real-Time, Scalable Data Warehousing}
+
+\textbf{Article Reference:} \cite{42851}
+
+The google guys, in their usual style, are mostly bragging more than providing insight in this one. The operational complexity involved in their proposed solution is so massive, there are only a hand full of teams in the world that could possibly consider it, and they mostly work for google anyway. 
+
+That being said, there is a nice little bit of validation in my thinking at the end of the article: "Mesa explores a new point in the design space with high scalability, strong consistency, and transactional guarantees by restricting the system to be only available for batched and controlled updates that are processed in near real-time" 
+
+Constraints have to be removed, rethinking the way data gets into the DB and made available is the place to focus. It also validates the basic Lambda/Duid type model.
 
 \subsection{Big Data}
 

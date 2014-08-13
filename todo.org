@@ -19,6 +19,7 @@ queries in relational databases. In STOC, 1977
 - [ ] How does left associativity relate to laziness?
 - [ ] Paxos related papers
 - [ ] SQL Parsers?
+- [ ] Go through the spark tutorials, get familiar with Catalyst
 - [ ] Read up on the query planning and hooks for same in Hive and Impala. 
 - [ ] Fundamental question, do you build a query planner into the middleware? Is that where the idea is going?
 - [ ] Review datalog contrib in clojure (https://code.google.com/p/clojure-contrib/wiki/DatalogOverview)
@@ -51,12 +52,40 @@ queries in relational databases. In STOC, 1977
   - [ ] HadoopSPARQL : A Hadoop-based Engine for Multiple SPARQL Query Answering (http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_346.pdf)
   - [ ] Distributed SPARQL query engine using MapReduce (http://www.inf.ed.ac.uk/publications/thesis/online/IM100832.pdf)
   - [ ] Semantic Database Modeling: Survey, Applications, and Research Issues (http://www.cc.gatech.edu/computing/Database/readinggroup/articles/p201-hull.pdf)
-  - [ ] Mesa: Geo-Replicated, Near Real-Time, Scalable Data Warehousing (http://www.vldb.org/pvldb/vol7/p1259-gupta.pdf)
+  - [X] Mesa: Geo-Replicated, Near Real-Time, Scalable Data Warehousing (http://www.vldb.org/pvldb/vol7/p1259-gupta.pdf)
   - [X] Summingbird: A Framework for Integrating Batch and Online MapReduce Computations (http://www.vldb.org/pvldb/vol7/p1441-boykin.pdf)
   - [ ] A Co-Relational Model of Data for Large Shared Data Banks (http://dl.acm.org/citation.cfm?id=1924436)
   - [X] Indexing HDFS Data in PDW: Splitting the data from the index (http://www.vldb.org/pvldb/vol7/p1520-gankidi.pdf)
   - [X] The Unified Logging Infrastructure for Data Analytics at Twitter (http://vldb.org/pvldb/vol5/p1771_georgelee_vldb2012.pdf)
   - [ ] Algebraic classifiers: a generic approach to fast cross-validation, online training, and parallel training(http://jmlr.org/proceedings/papers/v28/izbicki13.pdf)
+  - [X] Shark: SQL and Rich Analytics at Scale (http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-214.pdf)
+  - [ ] S. Melnik et al. Dremel: interactive analysis of web-scale datasets. Proc. VLDB Endow., 3:330–339, Sept 2010
+  - [ ] A. Pavlo et al. A comparison of approaches to large-scale data analysis. In SIGMOD, 2009
+  - [ ] M. Stonebraker et al. Mapreduce and parallel dbmss: friends or foes? Commun. ACM
+  - [ ] B. Guffler et al. Handling data skew in mapreduce. In CLOSER, 2011
+  - [ ] X. Feng et al. Towards a unified architecture for in-rdbms analytics. In SIGMOD, 2012
+  - [ ] Time, clocks and the ordering of events in a distributed system: http://web.stanford.edu/class/cs240/readings/lamport.pdf
+  - [ ] Reading on vector clocks (http://basho.com/why-vector-clocks-are-hard/)
+  - [ ] Dynamo: Amazon’s Highly Available Key-value Store (http://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf)
+  - [ ] and related riak write up: http://docs.basho.com/riak/latest/theory/dynamo/
+  - [ ] Fallacies of distributed computing: http://www.rgoarchitects.com/Files/fallacies.pdf
+  - [ ] Paxos: http://the-paper-trail.org/blog/consensus-protocols-paxos/
+  - [ ] Quorum based commit protocol: https://ecommons.library.cornell.edu/bitstream/1813/6323/1/82-483.pdf, http://en.wikipedia.org/wiki/Quorum_(distributed_computing)
+  - [ ] Impossibility of Distributed Consensus with One Faulty Process (http://macs.citadel.edu/rudolphg/csci604/ImpossibilityofConsensus.pdf), (http://www.slideshare.net/HenryRobinson/pwl-nonotes)
+  - [ ] Life beyond Distributed Transactions: an Apostate’s Opinion (http://www.ics.uci.edu/~cs223/papers/cidr07p15.pdf)
+  - [ ] HadoopDB: An Architectural Hybrid of MapReduce and DBMS Technologies for Analytical Workloads (http://www.vldb.org/pvldb/2/vldb09-861.pdf)
+  - [ ] A Theory of Data Parallel Computing (https://www.dropbox.com/s/bripus159ziaqy9/eijkhout-tr1404-b.pdf), http://lambda-the-ultimate.org/node/5016#comment-81924
+  - [ ] [Semantic Integration of Heterogeneous Information Sources](http://www.mswi.uni-osnabrueck.de/rieger_2000_03.pdf)
+  - [ ] [RICES: Reasoning about Information Consistency across Enterprise Solutions](./papers/rices.doc)
+  - [ ] [Semantic-Integration Research in the Database Community](http://www.aaai.org/ojs/index.php/aimagazine/article/view/1801/1699), [Alternate link](./papers/1801-1797-1-PB.pdf)
+  - [ ] [Indexing Techniques in Data Warehousing Environment The UB-Tree Algorithm](http://www.aui.ma/personal/~H.Haddouti/UB_Tree_paper.pdf
+  - [ ] [The Universal B-Tree for multidimensional indexing: General Concepts](http://citeseerx.ist.psu.edu/showciting?cid=13384)
+  - [ ] Bayer R (1996) The Universal B-Tree for multidimensional indexing. Technische Universitat Munchen Technical Report TUM-I9637. http://mistral.in.tum.de/results/publications/TUM-I9637.pdf
+  - [ ] Bayer R and McCreight E (1972) Organization and maintenance of Large Ordered Indexes. Acta Informatica 1(3):173-189. http://www.liacs.nl/~graaf/STUDENTENSEMINARIUM/OMLO.pdf
+  - [ ] Data Structures and Algorithms for Data-Parallel Computing in a Managed Runtime(http://axel22.github.io/resources/docs/my_thesis.pdf)
+
+
+
   
 
 
