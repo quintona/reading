@@ -19,6 +19,8 @@ queries in relational databases. In STOC, 1977
 - [ ] How does left associativity relate to laziness?
 - [ ] Paxos related papers
 - [ ] SQL Parsers?
+- [ ] Take a look at Staash (https://github.com/Netflix/staash)
+- [ ] Grab some papers from https://github.com/rxin/db-readings
 - [ ] Go through the spark tutorials, get familiar with Catalyst
 - [ ] Read up on the query planning and hooks for same in Hive and Impala. 
 - [ ] Fundamental question, do you build a query planner into the middleware? Is that where the idea is going?
@@ -83,6 +85,14 @@ queries in relational databases. In STOC, 1977
   - [ ] Bayer R (1996) The Universal B-Tree for multidimensional indexing. Technische Universitat Munchen Technical Report TUM-I9637. http://mistral.in.tum.de/results/publications/TUM-I9637.pdf
   - [ ] Bayer R and McCreight E (1972) Organization and maintenance of Large Ordered Indexes. Acta Informatica 1(3):173-189. http://www.liacs.nl/~graaf/STUDENTENSEMINARIUM/OMLO.pdf
   - [ ] Data Structures and Algorithms for Data-Parallel Computing in a Managed Runtime(http://axel22.github.io/resources/docs/my_thesis.pdf)
+  - [ ] Multidimensional Access Methods (http://mistral.in.tum.de/rwork/gg98.pdf)
+  - [ ] http://www.dcc.uchile.cl/~gnavarro/ps/cpm12.pdf
+  - [ ] http://www.ittc.ku.edu/~jsv/Papers/GVX11.WaveletTreeCCP.pdf
+  - [ ] http://alexbowe.com/wavelet-trees/
+  - [ ] http://blog.treode.com/minitransaction/
+  - [ ] Cache obvious b-trees
+  - [ ] https://github.com/analytics/analytics/blob/master/notes/papers.md
+
 
 
 
