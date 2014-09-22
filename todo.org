@@ -3,6 +3,10 @@
 - [X] Figure out bibtex
 - [X] Get a latex plugin working nicely in sublime (latexing isn't working because you can't buy it)
 - [X] Setup an organisation repo to put all the org mode files and notes
+- [ ] Specifics on mathematical induction, seems intuitive, must validate
+- [ ] When we refer to "Order", over and above the cyclic space "depth", what else does it mean more generally? !!!! Same Cardinality, there is a bijection between them. Be absolutely sure on bijection. "Same number of elements of every order"? 
+Cardinality == The number of elements == the order
+- [ ] So the key question becomes, what is the definition of structure within a group? How do I define equivalence?
 - [ ] Find the research and theory behind lingual (https://github.com/julianhyde/optiq)
 - [ ] Harvard algebra course: http://www.extension.harvard.edu/open-learning-initiative/abstract-algebra
 - [ ] The containment problem is known to be computationaly hard? A. Chandra and P. M. Merlin. Optimal implementation of conjunctive
@@ -92,12 +96,34 @@ queries in relational databases. In STOC, 1977
   - [ ] http://blog.treode.com/minitransaction/
   - [ ] Cache obvious b-trees
   - [ ] https://github.com/analytics/analytics/blob/master/notes/papers.md
-
-
-
-
+- [ ] Cluster install:
+  - [X] Create a vagrant script that creates a box and installs CM and the impala tpc-ds kit
+  - [X] Manually create the nodes
+  - [X] Use the wizard to add these nodes to the cluster
+  - [ ] Complete the data generation through running a script from the CM box
+  - [ ] Figure out how to add the TPC-DS data to s3, and download it.
+  - [ ] Move node to EBS backed
+  - [X] Figure out why HDFS isn't picking up the disks first time
   
+As a first piece of research, the idea is to use Spark SQL, do some performance benchmarks against Impala. Then implement an integration between a relational DB and catalyst such that certain queries are optimised and show the performance uplift. There will be 2 outcomes to this, firstly some numbers relating to the number of concurrent users for a given cluster. Secondly, a comparison of the performance of certain queries before and after the externalized query index has been created. 
+- [X] Cluster creation process on AWS
+- [X] Local dev environment
+- [X] Get the data generated in the small
+- [ ] Write some scripts that load the source data into parquet data using hive, not impala.
+- [ ] Get the data generated in the large
+- [X] Get impala tests working on the local vm
+- [ ] Experiment with the performance testing framework for scala
+- [ ] Get equivalent spark tests working on the local VM
+- [X] Write the performance scripts for impala
+- [ ] Get the performance test working on the local VM
 
+./cloudera-manager-installer.bin --i-agree-to-all-licenses --noprompt --noreadme --nooptions
+sudo sysctl vm.swappiness=0  
+
+To copy from HDFS to S3:
+hadoop distcp -Dfs.s3.awsAccessKeyId=AKIAIKJLNANSO2FTXBUA -Dfs.s3.awsSecretAccessKey=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 hdfs:///user/hive/warehouse/tpcds_parquet.db/customer s3://tpcds/tpcds-cdh5/customer
+
+7563551141
 
 
 
