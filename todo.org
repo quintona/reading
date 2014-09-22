@@ -121,7 +121,7 @@ As a first piece of research, the idea is to use Spark SQL, do some performance 
 sudo sysctl vm.swappiness=0  
 
 To copy from HDFS to S3:
-hadoop distcp -Dfs.s3.awsAccessKeyId=AKIAIKJLNANSO2FTXBUA -Dfs.s3.awsSecretAccessKey=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 hdfs:///user/hive/warehouse/tpcds_parquet.db/customer s3://tpcds/tpcds-cdh5/customer
+hadoop distcp -Dfs.s3.awsAccessKeyId= -Dfs.s3.awsSecretAccessKey= hdfs:///user/hive/warehouse/tpcds_parquet.db/customer s3://tpcds/tpcds-cdh5/customer
 
 7563551141
 
